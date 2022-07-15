@@ -60,7 +60,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 
-
+Route::get('/',function(){
+    return redirect('/login');
+});
 Route::get('/login', [AuthController::class, 'Index']);
 Route::post('/login', [AuthController::class, 'Login'])->name('login');
 Route::get('/logout', [AuthController::class, 'Logout']);
