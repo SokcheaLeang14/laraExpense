@@ -14,19 +14,14 @@
             </div>
             <div class="form-group">
                 <label for="currency_symbol">Currency Symbol <span class="text-danger">*</span></label>
-                <input type="text" id="currency_symbol" name="currency_symbol" class="form-control" value="{{ isset($record) ? $record->currency_symbol : '' }}" required>
+                <select name="currency_symbol" id="currency_symbol" class="form-select">
+                    <option value="$" {{ isset($record) && $record->currency_symbol == '$' ? 'selected' : ''  }}>$</option>
+                    <option value="៛" {{ isset($record) && $record->currency_symbol == '៛' ? 'selected' : ''  }}>៛</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="description">Description</label>
                 <input type="text" id="description" name="description" class="form-control" value="{{ isset($record) ? $record->description : '' }}" required>
-                {{-- @if($errors->has('name'))
-                    <em class="invalid-feedback">
-                        {{ $errors->first('name') }}
-                    </em>
-                @endif --}}
-                {{-- <p class="helper-block">
-                    {{ trans('cruds.user.fields.name_helper') }}
-                </p> --}}
             </div>
 
           <button type="submit" class="btn btn-primary">Submit</button>

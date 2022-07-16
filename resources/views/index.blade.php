@@ -58,7 +58,7 @@
             <div class="card mb-4 text-white bg-info">
               <div class="card-body pb-0 d-flex justify-content-between align-items-start">
                 <div>
-                  <div class="fs-4 fw-semibold">៛ {{ isset($balance->expenses) ? number_format($balance->expenses->sum('amount'), 2)  : '0.00'  }}</div>
+                  <div class="fs-4 fw-semibold">{{ $balance->currency_symbol }} {{ isset($balance->expenses) ? number_format($balance->expenses->sum('amount'), 2)  : '0.00'  }}</div>
                 </div>
                 <div class="dropdown">
                   <button class="btn btn-transparent text-white p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
