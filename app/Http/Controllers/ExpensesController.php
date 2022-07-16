@@ -12,6 +12,7 @@ class ExpensesController extends Controller
     public function Index()
     {
         $expenses = Expenses::with('expense_category')
+            ->with('wallet')
             ->whereHas('wallet', function ($query){ return $query->where('user_id', Auth::user()->id); })
             ->orderBy('id','DESC')
             ->get();

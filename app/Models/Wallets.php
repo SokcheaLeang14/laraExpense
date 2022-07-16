@@ -13,4 +13,9 @@ class Wallets extends Model
     protected $fillable = [
         '*',
     ];
+
+    public function expenses()
+    {
+        return $this->hasMany(Expenses::class, 'wallet_id');
+    }
 }

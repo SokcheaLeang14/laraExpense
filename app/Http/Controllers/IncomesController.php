@@ -11,8 +11,9 @@ class IncomesController extends Controller
 {
     public function Index()
     {
-        $incomes = Incomes::with('income_category')->
-        whereHas('wallet', function($query){ return $query->where('user_id', Auth::user()->id); })
+        $incomes = Incomes::with('income_category')
+        ->with('wallet')
+        ->whereHas('wallet', function($query){ return $query->where('user_id', Auth::user()->id); })
         ->get();
         return view('admin.income.index',compact('incomes'));
     }
