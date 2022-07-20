@@ -28,9 +28,8 @@ class AuthController extends Controller
         {
             return redirect('dashboard')->with('status', 'Logged in');
         }
-        else{
-           return redirect()->back()->withErrors('Username or Password is not correct');
-        }
+        
+        return redirect()->back()->withErrors('Username or Password is not correct');
     }
 
     public function Logout()

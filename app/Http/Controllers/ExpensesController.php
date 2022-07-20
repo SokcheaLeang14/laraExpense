@@ -22,7 +22,9 @@ class ExpensesController extends Controller
     public function Transaction(Request $request)
     {
 
-        $wallets = Wallets::select('id', 'name')->get();
+        $wallets = Wallets::where('user_id', Auth::user()->id)
+            ->select('id', 'name')
+            ->get();
         $expense_cats = ExpenseCategory::select('id','name')->get();
 
         if($_GET['type'] && $_GET['type'] == 'ed')

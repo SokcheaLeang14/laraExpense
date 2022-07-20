@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\DashboardController;
 use App\Http\Controllers\API\SignUpController;
+use App\Http\Controllers\API\AuthController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -16,9 +17,10 @@ use App\Http\Controllers\API\SignUpController;
 */
 
 Route::post('/register', [SignUpController::class, 'Register']); 
+Route::post('/login', [AuthController::class, 'Login']);
 Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'Index']);
-    
+    Route::post('/logout',[AuthController::class, 'Logout']);
 });
 // Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //     return $request->user();

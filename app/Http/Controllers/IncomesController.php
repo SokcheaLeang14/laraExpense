@@ -20,7 +20,9 @@ class IncomesController extends Controller
     public function Transaction(Request $request)
     {
 
-        $wallets = Wallets::select('id', 'name')->get();
+        $wallets = Wallets::select('id', 'name')
+            ->where('user_id', Auth::user()->id)
+            ->get();
         $income_cats = IncomeCategory::select('id','name')->get();
 
         if($_GET['type'] && $_GET['type'] == 'ed')

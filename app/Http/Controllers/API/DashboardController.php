@@ -18,7 +18,7 @@ class DashboardController extends Controller
 
         $balances = Wallets::select('id','name','amount','currency_symbol')
             ->with('expenses')
-            ->where('user_id', 1)
+            ->where('user_id', auth()->user()->id)
             ->get();
 
         if(isset($balances)){
