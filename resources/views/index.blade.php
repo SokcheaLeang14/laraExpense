@@ -70,7 +70,7 @@
                 </div>
               </div>
               <div class="c-chart-wrapper mt-3 mx-3" style="height:70px;">
-                <div>Total Expense</div>
+                <div>Total Expense (30 days)</div>
               </div>
             </div>
           </div>

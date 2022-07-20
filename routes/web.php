@@ -6,7 +6,7 @@ use App\Http\Controllers\ExpenseCategoryController;
 use App\Http\Controllers\ExpensesController;
 use App\Http\Controllers\IncomeCategoryController;
 use App\Http\Controllers\IncomesController;
-use App\Http\Controllers\DasboardController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\SignUpController;
 /*
@@ -22,7 +22,7 @@ use App\Http\Controllers\SignUpController;
 
 
 Route::group(['middleware' => 'auth'], function () {
-    Route::get('/dashboard',[DasboardController::class, 'Index']);
+    Route::get('/dashboard',[DashboardController::class, 'Index']);
 
     Route::get('/wallets',[WalletsController::class, 'Index']);
     Route::get('/wallet/form', [WalletsController::class, 'Transaction']);
