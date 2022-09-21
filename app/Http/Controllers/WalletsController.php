@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Wallets;
+use App\Models\Expenses;
+use App\Models\Incomes;
 use Auth;
 
 class WalletsController extends Controller
@@ -82,12 +84,20 @@ class WalletsController extends Controller
 
     public function Destroy(Request $request)
     {
-        if(isset($_GET['code']))
-        {
-            $code = base64_decode($_GET['code']);
-            $record =  Wallets::where('id', $code)->delete();
+        try{
+            if(isset($_GET['code']))
+            {
+                $code = base64_decode($_GET['code']);
 
-            return redirect()->back()->with('status', 'Wallets Deleted!');
+                Incomes::whereWalletId($code)->update(['wallet_id' => null]);
+                Expenses::whereWalletId($code)->update(['wallet_id' => null]);
+                $record =  Wallets::where('id', $code)->delete();
+
+                return redirect()->back()->with('status', 'Wallets Deleted!');
+            }
+        }
+        catch(Exception $e){
+            throw $e->message;
         }
         
     }
